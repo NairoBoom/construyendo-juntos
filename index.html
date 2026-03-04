@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo Juntos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-red': '#8B1A2B',
+                        'brand-red-light': '#A52538',
+                        'brand-gray': '#6B6B6B',
+                        'brand-dark': '#333333',
+                        'brand-green': '#0D7C5F',
+                        'brand-yellow': '#F5A623',
+                        'brand-pink': '#F8E8E8',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-poppins bg-white">
+
+    <!-- ==================== PAGE 1: WELCOME ==================== -->
+    <div id="page-welcome" class="page active min-h-screen flex flex-col items-center justify-center bg-white px-4">
+        <div class="text-center mb-10">
+            <div class="flex items-center justify-center mb-6">
+                <img src="img/Logo-final.svg" alt="Construyendo Juntos" class="h-16 md:h-24">
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-brand-dark mb-2">Bienvenidos</h2>
+            <p class="text-brand-gray text-base md:text-lg">Selecciona tu perfil e ingresa tu plan.</p>
+        </div>
+
+        <div class="max-w-md w-full px-4 md:px-0">
+            <button onclick="selectProfile('Vendedores Depósitos')" class="profile-btn w-full flex items-center bg-brand-red text-white rounded-full px-4 md:px-6 py-3 md:py-4 hover:bg-brand-red-light transition-all shadow-md">
+                <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/20 flex items-center justify-center mr-3 md:mr-4">
+                    <i class="fas fa-user text-white text-sm md:text-base"></i>
+                </div>
+                <span class="font-semibold flex-1 text-left text-sm md:text-base">Vendedores Depósitos</span>
+                <span class="text-xs md:text-sm opacity-80">Ingresar</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2: LOGIN ==================== -->
+    <div id="page-login" class="page min-h-screen flex">
+        <div class="hidden md:flex w-1/2 bg-gradient-to-b from-white to-gray-100 items-center justify-center">
+            <div class="text-center">
+                <img src="img/Logo-final.svg" alt="Construyendo Juntos" class="w-64 mx-auto mb-4">
+            </div>
+        </div>
+        <div class="w-full md:w-1/2 flex items-center justify-center" style="background: linear-gradient(180deg, #f5f0f0 0%, #d4a0a0 50%, #8B1A2B 100%);">
+            <div class="w-full max-w-md px-6 md:px-8">
+                <div class="md:hidden text-center mb-6">
+                    <img src="img/Logo-final.svg" alt="Construyendo Juntos" class="h-16 mx-auto mb-2">
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-dark mb-2 text-center">Bienvenido <span id="login-profile-name">Vendedores Depósitos</span></h2>
+                <p class="text-brand-gray text-center mb-6 md:mb-8 text-sm md:text-base">Inicie sesión para acceder a su cuenta</p>
+                <div id="login-form" class="space-y-4 md:space-y-5">
+                    <input type="text" id="login-user" placeholder="Ingresa tu usuario" class="w-full px-4 md:px-5 py-3 md:py-4 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-brand-red text-gray-600 text-sm md:text-base">
+                    <div class="relative">
+                        <input type="password" id="login-pass" placeholder="Ingresa tu contraseña" class="w-full px-4 md:px-5 py-3 md:py-4 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-brand-red text-gray-600 text-sm md:text-base">
+                        <button onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                            <i class="fas fa-eye-slash" id="eye-icon"></i>
+                        </button>
+                    </div>
+                    <!-- Error message -->
+                    <div id="login-error" class="hidden bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span></span>
+                    </div>
+                    <button onclick="doLogin()" class="w-full bg-brand-red text-white py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-brand-red-light transition-all">
+                        Continuar
+                    </button>
+                </div>
+                <p class="text-center text-white/70 text-xs md:text-sm mt-8 md:mt-16">Creado por Proimpo &nbsp; Copyright © 2025. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 3: HOME / DASHBOARD ==================== -->
+    <div id="page-home" class="page">
+        <!-- Top bar -->
+        <div id="topbar-home" class="bg-brand-red text-white text-xs md:text-sm flex justify-end items-center px-4 md:px-6 py-2 gap-4 md:gap-6">
+            <a href="#" class="hover:underline hidden sm:inline">Términos y Condiciones</a>
+            <a href="#" onclick="logout()" class="hover:underline">Cerrar Sesión</a>
+        </div>
+        <!-- Navbar -->
+        <nav class="bg-white shadow-md px-4 md:px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('page-home')">
+                <img src="img/Logo-final.svg" alt="Construyendo Juntos" class="h-8 md:h-10">
+            </div>
+            <div class="flex items-center gap-3 md:gap-6">
+                <div class="flex items-center gap-1 md:gap-2 cursor-pointer" onclick="navigateTo('page-cart')">
+                    <i class="fas fa-shopping-cart text-brand-gray"></i>
+                    <span class="text-brand-gray hidden sm:inline">Carrito</span>
+                    <span id="cart-count-nav" class="bg-brand-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </div>
+                <div class="flex items-center gap-1 md:gap-2 hidden sm:flex">
+                    <i class="fas fa-user text-brand-gray"></i>
+                    <span class="text-brand-gray text-sm md:text-base">Hola, <strong id="user-name-nav">Monica Sanchez</strong></span>
+                </div>
+                <div class="bg-brand-red text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg font-bold text-sm md:text-base" id="points-nav">900.000</div>
+            </div>
+        </nav>
+        <!-- Sub navbar -->
+        <div class="bg-white border-b relative">
+            <!-- Hamburger button (mobile only) -->
+            <button onclick="toggleMobileMenu(this)" class="md:hidden w-full px-4 py-2 flex items-center gap-2 text-brand-red text-sm font-medium">
+                <i class="fas fa-bars"></i> Menú
+                <i class="fas fa-chevron-down text-xs ml-auto transition-transform duration-300 hamburger-arrow"></i>
+            </button>
+            <!-- Links: hidden on mobile, flex on desktop -->
+            <div class="mobile-menu hidden md:flex px-4 md:px-6 py-2 gap-4 md:gap-6 text-sm flex-col md:flex-row md:overflow-x-auto md:whitespace-nowrap scrollbar-hide">
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-building mr-2 md:hidden"></i>Distribuidoras <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-users mr-2 md:hidden"></i>Participantes <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-file-invoice-dollar mr-2 md:hidden"></i>Liquidación <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-bell mr-2 md:hidden"></i>Novedades <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-camera mr-2 md:hidden"></i>Evidencias <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" onclick="navigateTo('page-catalog')" class="text-brand-dark font-bold hover:underline flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-gift mr-2 md:hidden"></i>Catálogo <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-user-cog mr-2 md:hidden"></i>Usuarios <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0"><i class="fas fa-shield-halved mr-2 md:hidden"></i>Administrador <i class="fas fa-chevron-down text-xs"></i></a>
+            </div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="max-w-3xl mx-auto px-4 md:px-6 mt-4 md:mt-6">
+            <div class="relative">
+                <input type="text" id="search-input-home" placeholder="buscar productos, bonos y mas..." class="w-full px-4 md:px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-red text-sm md:text-base" oninput="searchFromHome()">
+                <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- Banner Carousel Home -->
+        <div class="relative mt-4 md:mt-6 overflow-hidden" id="banner-carousel-home">
+            <!-- Slide 1 -->
+            <div class="banner-slide-home active" style="background: linear-gradient(135deg, #f8e8e8 0%, #f5f0f0 30%, #fdf6f0 60%, #f0e8e0 100%);">
+                <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between relative min-h-[200px] md:min-h-[320px]">
+                    <div class="absolute top-4 left-1/3 w-20 h-20 bg-brand-red/5 rounded-full hidden md:block"></div>
+                    <div class="absolute top-2 right-1/4 w-32 h-32 bg-brand-red/5 rounded-full hidden md:block"></div>
+                    <div class="flex-shrink-0 z-10 max-w-full md:max-w-xs text-center md:text-left mb-4 md:mb-0">
+                        <h2 class="text-3xl md:text-5xl font-black leading-tight text-brand-dark">¡Te estábamos<br><span class="text-brand-red">esperando!</span></h2>
+                        <div class="bg-white/80 rounded-xl p-3 md:p-4 mt-3 md:mt-4">
+                            <p class="text-sm text-brand-gray">El plan <strong>Construyendo Juntos</strong> tiene excelentes regalos para ti.</p>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex flex-1 items-center justify-center gap-3 relative z-10">
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="bg-white rounded-xl shadow-lg p-4 transform -rotate-3"><i class="fas fa-fan text-5xl text-gray-600"></i></div>
+                            <div class="bg-white rounded-xl shadow-lg p-3 transform rotate-2"><i class="fas fa-blender text-4xl text-gray-500"></i></div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="bg-gradient-to-br from-blue-900 to-blue-600 rounded-xl shadow-lg p-5 text-white text-center">
+                                <p class="text-xs font-bold tracking-wider">SMART</p>
+                                <p class="text-2xl font-black">TV</p>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-lg p-3"><i class="fas fa-utensils text-4xl text-gray-500"></i></div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="bg-white rounded-xl shadow-lg p-4 transform rotate-3"><i class="fas fa-fire-burner text-5xl text-gray-600"></i></div>
+                            <div class="bg-white rounded-xl shadow-lg p-3 transform -rotate-2"><i class="fas fa-mug-hot text-4xl text-gray-500"></i></div>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 right-4 md:right-8 z-10 hidden md:block">
+                        <div class="w-16 h-16 bg-brand-yellow rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-star text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="banner-slide-home" style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 50%, #e8f0e8 100%);">
+                <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between relative min-h-[200px] md:min-h-[320px]">
+                    <div class="flex-shrink-0 z-10 max-w-full md:max-w-xs text-center md:text-left mb-4 md:mb-0">
+                        <h2 class="text-3xl md:text-5xl font-black leading-tight text-brand-dark">Redime tus<br><span class="text-brand-green">puntos</span></h2>
+                        <p class="text-brand-gray mt-2 md:mt-3 text-base md:text-lg">Acumula puntos y elige los mejores premios para ti.</p>
+                    </div>
+                    <div class="hidden md:flex flex-1 items-center justify-center z-10">
+                        <div class="w-48 h-48 bg-brand-green/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-gift text-8xl text-brand-green/60"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="banner-slide-home" style="background: linear-gradient(135deg, #fef3e2 0%, #fff8f0 50%, #fef0e0 100%);">
+                <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between relative min-h-[200px] md:min-h-[320px]">
+                    <div class="flex-shrink-0 z-10 max-w-full md:max-w-xs text-center md:text-left mb-4 md:mb-0">
+                        <h2 class="text-3xl md:text-5xl font-black leading-tight text-brand-dark">Los mejores<br><span class="text-brand-yellow">productos</span></h2>
+                        <p class="text-brand-gray mt-2 md:mt-3 text-base md:text-lg">Electrodomésticos, cocina, hogar y mucho más.</p>
+                    </div>
+                    <div class="hidden md:flex flex-1 items-center justify-center gap-6 z-10">
+                        <div class="bg-white rounded-xl shadow-lg p-5"><i class="fas fa-tv text-5xl text-gray-600"></i></div>
+                        <div class="bg-white rounded-xl shadow-lg p-5"><i class="fas fa-couch text-5xl text-gray-600"></i></div>
+                        <div class="bg-white rounded-xl shadow-lg p-5"><i class="fas fa-kitchen-set text-5xl text-gray-600"></i></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation Arrows -->
+            <button onclick="prevSlideHome()" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/80 rounded-full flex items-center justify-center shadow-md hover:bg-white transition-all z-20">
+                <i class="fas fa-chevron-left text-brand-gray text-sm"></i>
+            </button>
+            <button onclick="nextSlideHome()" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/80 rounded-full flex items-center justify-center shadow-md hover:bg-white transition-all z-20">
+                <i class="fas fa-chevron-right text-brand-gray text-sm"></i>
+            </button>
+            <!-- Dots -->
+            <div class="absolute bottom-3 md:bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                <button onclick="goToSlideHome(0)" class="banner-dot-home active w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-brand-red transition-all"></button>
+                <button onclick="goToSlideHome(1)" class="banner-dot-home w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-300 transition-all"></button>
+                <button onclick="goToSlideHome(2)" class="banner-dot-home w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-300 transition-all"></button>
+            </div>
+        </div>
+
+        <!-- ¿Qué es el plan? -->
+        <section class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
+            <h2 class="text-xl md:text-2xl font-bold text-brand-dark text-center mb-4">¿Qué es el plan Construyendo Juntos?</h2>
+            <p class="text-center text-brand-gray max-w-3xl mx-auto mb-6 text-sm md:text-base px-2">
+                El plan de fidelización <strong>Construyendo Juntos</strong> tiene como objetivo reconocer y premiar la excelente gestión de rotación de portafolio.
+                A través del cumplimiento de los desafíos mensuales disponibles en la plataforma, los participantes podrán acumular puntos que reflejan su desempeño comercial, disciplina operativa y compromiso con el crecimiento.
+            </p>
+            <div class="text-center">
+                <button onclick="navigateTo('page-catalog')" class="bg-brand-red text-white px-6 md:px-8 py-3 rounded-full font-semibold hover:bg-brand-red-light transition-all text-sm md:text-base">
+                    <i class="fas fa-star mr-2"></i> ¡Redime tu incentivo!
+                </button>
+            </div>
+        </section>
+
+        <!-- Generalidades -->
+        <section class="bg-gray-50 py-8 md:py-12">
+            <div class="max-w-6xl mx-auto px-4 md:px-6">
+                <h2 class="text-xl md:text-2xl font-bold text-brand-dark text-center mb-6 md:mb-8">Generalidades</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                    <div class="bg-white rounded-xl p-4 md:p-5 shadow-sm flex items-start gap-3 md:gap-4 border-l-4 border-brand-red">
+                        <i class="fas fa-check-circle text-brand-red text-lg md:text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-brand-dark text-sm md:text-base">Cumple los desafíos</h4>
+                            <p class="text-xs md:text-sm text-brand-gray">Revisa y completa los desafíos mensuales publicados en la plataforma.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 md:p-5 shadow-sm flex items-start gap-3 md:gap-4 border-l-4 border-brand-yellow">
+                        <i class="fas fa-hand-holding-usd text-brand-yellow text-lg md:text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-brand-dark text-sm md:text-base">Acumula puntos según el cumplimiento</h4>
+                            <p class="text-xs md:text-sm text-brand-gray">Cada nivel de cumplimiento te otorga puntos diferentes.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 md:p-5 shadow-sm flex items-start gap-3 md:gap-4 border-l-4 border-brand-green">
+                        <i class="fas fa-gift text-brand-green text-lg md:text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-brand-dark text-sm md:text-base">Redime tus puntos por premios</h4>
+                            <p class="text-xs md:text-sm text-brand-gray">Visita nuestro catálogo y elige los premios que prefieras.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 md:p-5 shadow-sm flex items-start gap-3 md:gap-4 border-l-4 border-brand-red">
+                        <i class="fas fa-calendar-check text-brand-red text-lg md:text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-brand-dark text-sm md:text-base">Publicación de las metas</h4>
+                            <p class="text-xs md:text-sm text-brand-gray">Las metas se publican mensualmente para que puedas planificar tu gestión.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ¿Cómo ganas? -->
+        <section class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
+            <h2 class="text-xl md:text-2xl font-bold text-brand-dark text-center mb-4">¿Cómo ganas?</h2>
+            <p class="text-center text-brand-gray max-w-2xl mx-auto mb-6 md:mb-8 text-sm md:text-base px-2">Acumula puntos al completar tus desafíos mensuales. Mientras más desafíos completes y mejor sea tu cumplimiento, ¡más puntos ganarás!</p>
+            <div class="flex flex-row justify-center items-center gap-3 md:gap-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-brand-pink rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3">
+                        <i class="fas fa-bullseye text-2xl md:text-3xl text-brand-red"></i>
+                    </div>
+                    <p class="font-semibold text-brand-dark text-xs md:text-sm">Cumple tus<br>desafíos</p>
+                </div>
+                <i class="fas fa-arrow-right text-brand-red text-lg md:text-2xl"></i>
+                <div class="text-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3">
+                        <i class="fas fa-star text-2xl md:text-3xl text-brand-yellow"></i>
+                    </div>
+                    <p class="font-semibold text-brand-dark text-xs md:text-sm">Acumula<br>puntos</p>
+                </div>
+                <i class="fas fa-arrow-right text-brand-red text-lg md:text-2xl"></i>
+                <div class="text-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3">
+                        <i class="fas fa-gift text-2xl md:text-3xl text-brand-green"></i>
+                    </div>
+                    <p class="font-semibold text-brand-dark text-xs md:text-sm">Redime tus<br>premios</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ¿Cómo redimes? -->
+        <section class="bg-gradient-to-r from-brand-red to-brand-red-light py-8 md:py-12">
+            <div class="max-w-6xl mx-auto px-4 md:px-6 text-center">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8">¿Cómo redimes?</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3">
+                            <i class="fas fa-sign-in-alt text-lg md:text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold mb-1 md:mb-2 text-xs md:text-base">1. Ingresa a la plataforma</h4>
+                        <p class="text-xs md:text-sm text-white/80 hidden sm:block">Accede con tu usuario y contraseña.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3">
+                            <i class="fas fa-th-large text-lg md:text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold mb-1 md:mb-2 text-xs md:text-base">2. Ve al catálogo</h4>
+                        <p class="text-xs md:text-sm text-white/80 hidden sm:block">Explora los premios disponibles.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3">
+                            <i class="fas fa-cart-plus text-lg md:text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold mb-1 md:mb-2 text-xs md:text-base">3. Agrega al carrito</h4>
+                        <p class="text-xs md:text-sm text-white/80 hidden sm:block">Selecciona los productos que deseas.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-4 md:p-6 text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3">
+                            <i class="fas fa-check-double text-lg md:text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold mb-1 md:mb-2 text-xs md:text-base">4. Confirma tu redención</h4>
+                        <p class="text-xs md:text-sm text-white/80 hidden sm:block">Completa tus datos y listo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preguntas frecuentes -->
+        <section class="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">
+            <h2 class="text-xl md:text-2xl font-bold text-brand-dark text-center mb-6 md:mb-8">Preguntas frecuentes</h2>
+            <div class="space-y-3" id="faq-container">
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full text-left px-4 md:px-6 py-3 md:py-4 flex justify-between items-center hover:bg-gray-50 gap-2">
+                        <span class="font-semibold text-brand-dark text-sm md:text-base">¿Cómo recupero mi clave?</span>
+                        <i class="fas fa-chevron-down text-brand-red transition-transform text-xs md:text-sm flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer px-4 md:px-6 pb-4 hidden">
+                        <p class="text-brand-gray text-xs md:text-sm">Puedes comunicarte con el administrador de la plataforma para solicitar el restablecimiento de tu contraseña.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full text-left px-4 md:px-6 py-3 md:py-4 flex justify-between items-center hover:bg-gray-50 gap-2">
+                        <span class="font-semibold text-brand-dark text-sm md:text-base">¿Cuándo se determina la estrategia de la plataforma?</span>
+                        <i class="fas fa-chevron-down text-brand-red transition-transform text-xs md:text-sm flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer px-4 md:px-6 pb-4 hidden">
+                        <p class="text-brand-gray text-xs md:text-sm">La estrategia se define mensualmente y se publica en la plataforma para todos los participantes.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full text-left px-4 md:px-6 py-3 md:py-4 flex justify-between items-center hover:bg-gray-50 gap-2">
+                        <span class="font-semibold text-brand-dark text-sm md:text-base">¿Los puntos tienen vigencia?</span>
+                        <i class="fas fa-chevron-down text-brand-red transition-transform text-xs md:text-sm flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer px-4 md:px-6 pb-4 hidden">
+                        <p class="text-brand-gray text-xs md:text-sm">Sí, los puntos tienen una vigencia anual. Consulta las condiciones en la sección de Términos y Condiciones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-brand-dark text-white/60 text-center py-4 md:py-6 text-xs md:text-sm">
+            Creado por Proimpo &nbsp; Copyright © 2025. Todos los derechos reservados.
+        </footer>
+    </div>
+
+    <!-- ==================== PAGE 4: CATALOG ==================== -->
+    <div id="page-catalog" class="page">
+        <!-- Top bar -->
+        <div class="bg-brand-red text-white text-xs md:text-sm flex justify-end items-center px-4 md:px-6 py-2 gap-4 md:gap-6">
+            <a href="#" class="hover:underline hidden sm:inline">Términos y Condiciones</a>
+            <a href="#" onclick="logout()" class="hover:underline">Cerrar Sesión</a>
+        </div>
+        <!-- Navbar -->
+        <nav class="bg-white shadow-md px-4 md:px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('page-home')">
+                <img src="img/Logo-final.svg" alt="Construyendo Juntos" class="h-8 md:h-10">
+            </div>
+            <div class="flex items-center gap-3 md:gap-6">
+                <div class="flex items-center gap-1 md:gap-2 cursor-pointer" onclick="navigateTo('page-cart')">
+                    <i class="fas fa-shopping-cart text-brand-gray"></i>
+                    <span class="text-brand-gray hidden sm:inline">Carrito</span>
+                    <span id="cart-count-nav2" class="bg-brand-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </div>
+                <div class="flex items-center gap-1 md:gap-2 hidden sm:flex">
+                    <i class="fas fa-user text-brand-gray"></i>
+                    <span class="text-brand-gray text-sm md:text-base">Hola, <strong id="user-name-nav2">Monica Sanchez</strong></span>
+                </div>
+                <div class="bg-brand-red text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg font-bold text-sm md:text-base" id="points-nav2">900.000</div>
+            </div>
+        </nav>
+        <div class="bg-white border-b relative">
+            <button onclick="toggleMobileMenu(this)" class="md:hidden w-full px-4 py-2 flex items-center gap-2 text-brand-red text-sm font-medium">
+                <i class="fas fa-bars"></i> Menú
+                <i class="fas fa-chevron-down text-xs ml-auto transition-transform duration-300 hamburger-arrow"></i>
+            </button>
+            <div class="mobile-menu hidden md:flex px-4 md:px-6 py-2 gap-4 md:gap-6 text-sm flex-col md:flex-row md:overflow-x-auto md:whitespace-nowrap scrollbar-hide">
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-building mr-2 md:hidden"></i>Distribuidoras <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-users mr-2 md:hidden"></i>Participantes <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-file-invoice-dollar mr-2 md:hidden"></i>Liquidación <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-bell mr-2 md:hidden"></i>Novedades <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-camera mr-2 md:hidden"></i>Evidencias <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" onclick="navigateTo('page-catalog')" class="text-brand-dark font-bold hover:underline border-b-2 border-brand-dark pb-1 flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-gift mr-2 md:hidden"></i>Catálogo <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-user-cog mr-2 md:hidden"></i>Usuarios <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0"><i class="fas fa-shield-halved mr-2 md:hidden"></i>Administrador <i class="fas fa-chevron-down text-xs"></i></a>
+            </div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="max-w-3xl mx-auto px-4 md:px-6 mt-4 md:mt-6">
+            <div class="relative">
+                <input type="text" id="search-input" placeholder="buscar productos, bonos y mas..." class="w-full px-4 md:px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-red text-sm md:text-base" oninput="filterProducts()">
+                <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- Banner Carousel -->
+        <div class="relative mt-4 md:mt-6 overflow-hidden" id="banner-carousel">
+            <!-- Slide 1 -->
+            <div class="banner-slide active" style="background: linear-gradient(135deg, #f8e8e8 0%, #f5f0f0 30%, #fdf6f0 60%, #f0e8e0 100%);">
+                <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between relative min-h-[200px] md:min-h-[320px]">
+                    <div class="absolute top-4 left-1/3 w-20 h-20 bg-brand-red/5 rounded-full hidden md:block"></div>
+                    <div class="absolute top-2 right-1/4 w-32 h-32 bg-brand-red/5 rounded-full hidden md:block"></div>
+                    <div class="flex-shrink-0 z-10 max-w-full md:max-w-xs text-center md:text-left mb-4 md:mb-0">
+                        <h2 class="text-3xl md:text-5xl font-black leading-tight text-brand-dark">Catálogo de<br><span class="text-brand-red">premios</span></h2>
+                    </div>
+                    <div class="hidden md:flex flex-1 items-center justify-center gap-3 relative z-10">
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="bg-white rounded-xl shadow-lg p-4 transform -rotate-3"><i class="fas fa-fan text-5xl text-gray-600"></i></div>
+                            <div class="bg-white rounded-xl shadow-lg p-3 transform rotate-2"><i class="fas fa-blender text-4xl text-gray-500"></i></div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="bg-gradient-to-br from-blue-900 to-blue-600 rounded-xl shadow-lg p-5 text-white text-center">
+                                <p class="text-xs font-bold tracking-wider">SMART</p>
+                                <p class="text-2xl font-black">TV</p>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-lg p-3"><i class="fas fa-utensils text-4xl text-gray-500"></i></div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="bg-white rounded-xl shadow-lg p-4 transform rotate-3"><i class="fas fa-fire-burner text-5xl text-gray-600"></i></div>
+                            <div class="bg-white rounded-xl shadow-lg p-3 transform -rotate-2"><i class="fas fa-mug-hot text-4xl text-gray-500"></i></div>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 right-4 md:right-8 z-10 hidden md:block">
+                        <div class="w-16 h-16 bg-brand-yellow rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-star text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="banner-slide" style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 50%, #e8f0e8 100%);">
+                <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between relative min-h-[200px] md:min-h-[320px]">
+                    <div class="flex-shrink-0 z-10 max-w-full md:max-w-xs text-center md:text-left">
+                        <h2 class="text-3xl md:text-5xl font-black leading-tight text-brand-dark">Redime tus<br><span class="text-brand-green">puntos</span></h2>
+                        <p class="text-brand-gray mt-2 md:mt-3 text-base md:text-lg">Acumula puntos y elige los mejores premios para ti.</p>
+                    </div>
+                    <div class="hidden md:flex flex-1 items-center justify-center z-10">
+                        <div class="w-48 h-48 bg-brand-green/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-gift text-8xl text-brand-green/60"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="banner-slide" style="background: linear-gradient(135deg, #fef3e2 0%, #fff8f0 50%, #fef0e0 100%);">
+                <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between relative min-h-[200px] md:min-h-[320px]">
+                    <div class="flex-shrink-0 z-10 max-w-full md:max-w-xs text-center md:text-left">
+                        <h2 class="text-3xl md:text-5xl font-black leading-tight text-brand-dark">Los mejores<br><span class="text-brand-yellow">productos</span></h2>
+                        <p class="text-brand-gray mt-2 md:mt-3 text-base md:text-lg">Electrodomésticos, cocina, hogar y mucho más.</p>
+                    </div>
+                    <div class="hidden md:flex flex-1 items-center justify-center gap-6 z-10">
+                        <div class="bg-white rounded-xl shadow-lg p-5"><i class="fas fa-tv text-5xl text-gray-600"></i></div>
+                        <div class="bg-white rounded-xl shadow-lg p-5"><i class="fas fa-couch text-5xl text-gray-600"></i></div>
+                        <div class="bg-white rounded-xl shadow-lg p-5"><i class="fas fa-kitchen-set text-5xl text-gray-600"></i></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation Arrows -->
+            <button onclick="prevSlide()" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/80 rounded-full flex items-center justify-center shadow-md hover:bg-white transition-all z-20">
+                <i class="fas fa-chevron-left text-brand-gray text-sm"></i>
+            </button>
+            <button onclick="nextSlide()" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/80 rounded-full flex items-center justify-center shadow-md hover:bg-white transition-all z-20">
+                <i class="fas fa-chevron-right text-brand-gray text-sm"></i>
+            </button>
+            <!-- Dots -->
+            <div class="absolute bottom-3 md:bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                <button onclick="goToSlide(0)" class="banner-dot active w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-brand-red transition-all"></button>
+                <button onclick="goToSlide(1)" class="banner-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-300 transition-all"></button>
+                <button onclick="goToSlide(2)" class="banner-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-300 transition-all"></button>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="max-w-6xl mx-auto px-4 md:px-6 mt-6 md:mt-8">
+            <h3 class="text-lg md:text-xl font-bold text-brand-dark text-center mb-4 md:mb-6">Categorías</h3>
+            <div class="flex justify-center gap-2 md:gap-4 flex-wrap mb-6 md:mb-8" id="category-filters">
+                <button onclick="filterByCategory('all', event)" class="cat-btn active bg-brand-red text-white px-4 md:px-6 py-2 rounded-full font-medium transition-all text-sm md:text-base">Todos</button>
+                <button onclick="filterByCategory('General', event)" class="cat-btn bg-gray-100 text-brand-gray px-4 md:px-6 py-2 rounded-full font-medium hover:bg-brand-red hover:text-white transition-all text-sm md:text-base">General</button>
+                <button onclick="filterByCategory('Hogar', event)" class="cat-btn bg-gray-100 text-brand-gray px-4 md:px-6 py-2 rounded-full font-medium hover:bg-brand-red hover:text-white transition-all text-sm md:text-base">Hogar</button>
+                <button onclick="filterByCategory('Electrodomésticos', event)" class="cat-btn bg-gray-100 text-brand-gray px-4 md:px-6 py-2 rounded-full font-medium hover:bg-brand-red hover:text-white transition-all text-sm md:text-base">Electrodomésticos</button>
+                <button onclick="filterByCategory('Cocina', event)" class="cat-btn bg-gray-100 text-brand-gray px-4 md:px-6 py-2 rounded-full font-medium hover:bg-brand-red hover:text-white transition-all text-sm md:text-base">Cocina</button>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="max-w-6xl mx-auto px-4 md:px-6 pb-12">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6" id="products-grid">
+                <!-- Products rendered by JS -->
+            </div>
+        </div>
+
+        <footer class="bg-brand-dark text-white/60 text-center py-6 text-sm">
+            Creado por Proimpo &nbsp; Copyright © 2025. Todos los derechos reservados.
+        </footer>
+    </div>
+
+    <!-- ==================== PAGE 5: CART ==================== -->
+    <div id="page-cart" class="page">
+        <!-- Top bar -->
+        <div class="bg-brand-red text-white text-xs md:text-sm flex justify-end items-center px-4 md:px-6 py-2 gap-4 md:gap-6">
+            <a href="#" class="hover:underline hidden sm:inline">Términos y Condiciones</a>
+            <a href="#" onclick="logout()" class="hover:underline">Cerrar Sesión</a>
+        </div>
+        <!-- Navbar -->
+        <nav class="bg-white shadow-md px-4 md:px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('page-home')">
+                <img src="img/Logo-final.svg" alt="Construyendo Juntos" class="h-8 md:h-10">
+            </div>
+            <div class="flex items-center gap-3 md:gap-6">
+                <div class="flex items-center gap-1 md:gap-2 cursor-pointer" onclick="navigateTo('page-cart')">
+                    <i class="fas fa-shopping-cart text-brand-gray"></i>
+                    <span class="text-brand-gray hidden sm:inline">Carrito</span>
+                    <span id="cart-count-nav3" class="bg-brand-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </div>
+                <div class="flex items-center gap-1 md:gap-2 hidden sm:flex">
+                    <i class="fas fa-user text-brand-gray"></i>
+                    <span class="text-brand-gray text-sm md:text-base">Hola, <strong id="user-name-nav3">Monica Sanchez</strong></span>
+                </div>
+                <div class="bg-brand-red text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg font-bold text-sm md:text-base" id="points-nav3">900.000</div>
+            </div>
+        </nav>
+        <div class="bg-white border-b relative">
+            <button onclick="toggleMobileMenu(this)" class="md:hidden w-full px-4 py-2 flex items-center gap-2 text-brand-red text-sm font-medium">
+                <i class="fas fa-bars"></i> Menú
+                <i class="fas fa-chevron-down text-xs ml-auto transition-transform duration-300 hamburger-arrow"></i>
+            </button>
+            <div class="mobile-menu hidden md:flex px-4 md:px-6 py-2 gap-4 md:gap-6 text-sm flex-col md:flex-row md:overflow-x-auto md:whitespace-nowrap scrollbar-hide">
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-building mr-2 md:hidden"></i>Distribuidoras <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-users mr-2 md:hidden"></i>Participantes <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-file-invoice-dollar mr-2 md:hidden"></i>Liquidación <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-bell mr-2 md:hidden"></i>Novedades <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-camera mr-2 md:hidden"></i>Evidencias <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" onclick="navigateTo('page-catalog')" class="text-brand-dark font-bold hover:underline flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-gift mr-2 md:hidden"></i>Catálogo <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0 border-b md:border-0 border-gray-100"><i class="fas fa-user-cog mr-2 md:hidden"></i>Usuarios <i class="fas fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-brand-red hover:underline font-medium flex-shrink-0 py-2 md:py-0"><i class="fas fa-shield-halved mr-2 md:hidden"></i>Administrador <i class="fas fa-chevron-down text-xs"></i></a>
+            </div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="max-w-3xl mx-auto px-4 md:px-6 mt-4 md:mt-6">
+            <div class="relative">
+                <input type="text" placeholder="buscar productos, bonos y mas..." class="w-full px-4 md:px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-red text-sm md:text-base">
+                <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- Cart Content -->
+        <div class="max-w-6xl mx-auto px-4 md:px-6 mt-4 md:mt-6 pb-12">
+            <h2 class="text-xl md:text-2xl font-bold text-brand-red mb-4 md:mb-6">Carrito de compras</h2>
+            <div class="flex flex-col lg:flex-row gap-6">
+                <!-- Cart Table -->
+                <div class="flex-1 overflow-x-auto">
+                    <div class="bg-white border rounded-xl overflow-hidden min-w-[500px]">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b text-sm text-brand-gray">
+                                    <th class="text-left py-3 px-4">Productos</th>
+                                    <th class="text-center py-3 px-4">Cantidad</th>
+                                    <th class="text-center py-3 px-4">Valor unitario</th>
+                                    <th class="text-center py-3 px-4">Total Puntos</th>
+                                    <th class="py-3 px-4"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-table-body">
+                                <!-- Rendered by JS -->
+                            </tbody>
+                        </table>
+                        <div id="cart-empty" class="py-12 text-center text-brand-gray hidden">
+                            <i class="fas fa-shopping-cart text-4xl mb-3 opacity-30"></i>
+                            <p>Tu carrito está vacío</p>
+                            <button onclick="navigateTo('page-catalog')" class="mt-4 text-brand-red font-semibold hover:underline">Ir al catálogo</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Redemption Summary -->
+                <div class="w-full lg:w-80">
+                    <div class="bg-white border rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-brand-red/70 mb-6 italic">Resumen de Redención</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full border-4 border-brand-green flex items-center justify-center">
+                                    <div class="w-4 h-4 bg-brand-green rounded-full"></div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-brand-gray">Puntos para redimir</p>
+                                    <p class="text-2xl font-bold text-brand-dark" id="total-points-display">900.000</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full border-4 border-brand-yellow flex items-center justify-center">
+                                    <div class="w-4 h-4 bg-brand-yellow rounded-full"></div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-brand-gray">Total en carrito</p>
+                                    <p class="text-2xl font-bold text-brand-dark" id="cart-total-display">0</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full border-4 border-brand-red flex items-center justify-center">
+                                    <div class="w-4 h-4 bg-brand-red rounded-full"></div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-brand-gray">Puntos disponibles</p>
+                                    <p class="text-2xl font-bold text-brand-dark" id="available-points-display">900.000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openRedeemModal()" id="btn-redimir" class="w-full mt-4 bg-brand-green text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        Redimir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL: DATOS DE ENVÍO ==================== -->
+    <div id="modal-redeem" class="modal-overlay hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-lg overflow-hidden animate-fadeIn">
+            <div class="bg-brand-red px-6 py-4 flex justify-between items-center">
+                <h3 class="text-white font-bold text-lg">Datos de envío para redención</h3>
+                <button onclick="closeModal('modal-redeem')" class="text-white text-xl">&times;</button>
+            </div>
+            <div id="redeem-form" class="p-6 space-y-4">
+                <div class="flex items-center gap-2">
+                    <span class="bg-brand-red/10 text-brand-red px-3 py-1 rounded-lg text-sm font-bold">CC</span>
+                    <input type="text" id="redeem-cedula" placeholder="Cédula" class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-brand-red">
+                </div>
+                <input type="text" id="redeem-name" placeholder="Nombre completo" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-brand-red">
+                <div class="flex items-center gap-2">
+                    <span class="bg-brand-red/10 text-brand-red px-3 py-1 rounded-lg text-sm font-bold">@</span>
+                    <input type="email" id="redeem-email" placeholder="Correo electrónico" class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-brand-red">
+                </div>
+                <input type="text" id="redeem-phone" placeholder="Teléfono" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-brand-red">
+                <input type="text" id="redeem-address" placeholder="Dirección de envío" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-brand-red">
+                <select id="redeem-city" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-brand-red bg-white">
+                    <option>BOGOTA – BOGOTA</option>
+                    <option>MEDELLIN – ANTIOQUIA</option>
+                    <option>CALI – VALLE DEL CAUCA</option>
+                    <option>BARRANQUILLA – ATLANTICO</option>
+                </select>
+                <button onclick="confirmRedeem()" class="w-full bg-brand-red text-white py-3 rounded-xl font-bold text-lg hover:bg-brand-red-light transition-all">
+                    Confirmar para redimir
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL: OPERACIÓN COMPLETADA ==================== -->
+    <div id="modal-success" class="modal-overlay hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-md overflow-hidden animate-fadeIn max-h-[90vh] overflow-y-auto relative">
+            <button onclick="closeSuccessModal()" class="absolute top-4 right-4 text-gray-400 text-xl hover:text-gray-600 z-10">&times;</button>
+            <div class="p-8 text-center">
+                <h3 class="text-2xl font-bold text-brand-dark mb-4">Operación completada</h3>
+                <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-check text-white text-3xl"></i>
+                </div>
+                <div class="bg-gray-50 border rounded-xl p-4 mb-4 text-left">
+                    <p class="text-xs text-brand-gray uppercase tracking-wide">Ref. Redención</p>
+                    <p class="font-bold text-lg text-brand-dark font-mono" id="ref-redencion"></p>
+                </div>
+                <p class="text-sm font-semibold text-brand-dark mb-2 text-left">Productos redimidos:</p>
+                <div id="redeemed-products" class="space-y-2 mb-4 text-left">
+                    <!-- Rendered by JS -->
+                </div>
+                <div class="bg-brand-green/10 border border-brand-green/30 rounded-xl p-4 flex justify-between items-center">
+                    <span class="font-semibold text-brand-dark">Total puntos redimidos:</span>
+                    <span class="font-bold text-xl text-brand-green" id="total-redeemed">0 pts</span>
+                </div>
+                <!-- Countdown text -->
+                <p class="text-xs text-brand-gray mt-4">Redirigiendo al resumen en <span id="countdown-timer">3</span> segundos...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE: THANK YOU / RECIBO ==================== -->
+    <div id="page-thankyou" class="page">
+        <div class="min-h-screen bg-gray-200 flex items-center justify-center p-3 md:p-6">
+            <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl overflow-hidden">
+                <!-- Header -->
+                <div class="bg-gray-500 py-4 md:py-5 px-4 md:px-8 text-center">
+                    <h1 class="text-xl md:text-2xl font-bold text-white">Redención Exitosa!</h1>
+                </div>
+                <!-- Body -->
+                <div class="p-4 md:p-8">
+                    <p class="text-gray-700 mb-1 text-sm md:text-base">Hola <strong id="ty-user-name">Usuario</strong>,</p>
+                    <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">Tu redención ha sido procesada exitosamente. A continuación encontrarás el detalle de los productos redimidos:</p>
+
+                    <!-- Resumen box -->
+                    <div class="border-l-4 border-gray-400 bg-gray-50 p-3 md:p-4 mb-4 md:mb-6">
+                        <p class="font-bold text-gray-800 mb-1 text-sm md:text-base">Resumen de la Redención</p>
+                        <p class="text-gray-600 text-xs md:text-sm">Total de productos: <strong id="ty-total-products">0</strong></p>
+                        <p class="text-gray-600 text-xs md:text-sm">Redención: <strong id="ty-ref" class="font-mono">-</strong></p>
+                    </div>
+
+                    <!-- Productos table -->
+                    <p class="font-bold text-gray-800 mb-2 md:mb-3 text-sm md:text-base">Productos Redimidos:</p>
+                    <div class="overflow-x-auto mb-4 md:mb-6">
+                        <table class="w-full border-collapse min-w-[400px]">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="text-left py-2 px-2 md:px-3 text-xs md:text-sm text-gray-600 border border-gray-200">Producto</th>
+                                    <th class="text-center py-2 px-2 md:px-3 text-xs md:text-sm text-gray-600 border border-gray-200">Cant.</th>
+                                    <th class="text-right py-2 px-2 md:px-3 text-xs md:text-sm text-gray-600 border border-gray-200">Puntos Unit.</th>
+                                    <th class="text-right py-2 px-2 md:px-3 text-xs md:text-sm text-gray-600 border border-gray-200">Total Puntos</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ty-products-table">
+                                <!-- Rendered by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Total box -->
+                    <div class="border-l-4 border-gray-400 bg-gray-50 p-3 md:p-4 mb-4 md:mb-6">
+                        <p class="font-bold text-gray-800 text-sm md:text-base">Total de Puntos Redimidos: <span id="ty-total-points">0</span> pts</p>
+                    </div>
+
+                    <hr class="mb-4 md:mb-6">
+
+                    <p class="text-gray-600 text-xs md:text-sm mb-2">Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos.</p>
+                    <p class="text-gray-700 font-semibold text-sm md:text-base">Gracias por tu participación!</p>
+                </div>
+
+                <!-- Footer button -->
+                <div class="px-4 md:px-8 pb-4 md:pb-8">
+                    <button onclick="closeThankyou()" class="w-full bg-brand-red text-white py-3 rounded-xl font-bold hover:bg-brand-red-light transition-all">
+                        Volver al catálogo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL: PRODUCT DETAIL ==================== -->
+    <div id="modal-product" class="modal-overlay hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-2xl overflow-hidden animate-fadeIn max-h-[90vh] overflow-y-auto">
+            <div class="relative">
+                <button onclick="closeModal('modal-product')" class="absolute top-4 right-4 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md text-gray-500 z-10">&times;</button>
+                <div class="bg-gray-100 p-8 flex items-center justify-center" id="modal-product-image">
+                    <i class="fas fa-box-open text-8xl text-gray-300"></i>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-brand-dark mb-2" id="modal-product-name"></h3>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="bg-brand-red text-white px-3 py-1 rounded-full text-sm font-bold" id="modal-product-points"></span>
+                    <span class="text-sm text-brand-gray">puntos</span>
+                </div>
+                <p class="text-brand-gray text-sm leading-relaxed mb-6" id="modal-product-desc"></p>
+                <button onclick="addToCartFromModal()" class="w-full bg-brand-red text-white py-3 rounded-xl font-bold hover:bg-brand-red-light transition-all">
+                    <i class="fas fa-cart-plus mr-2"></i> Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
