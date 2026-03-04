@@ -228,7 +228,7 @@ const PRODUCTS = [
 // Usuarios de demo por perfil (usuario / contraseña)
 const USERS_DB = {
     'Vendedores Depósitos': [
-        { user: 'vendedor1', pass: '1234', name: 'Daniel Cuervo', cedula: '20004', email: 'daniel.cuervo@proimpo.com', phone: '3000000004', address: 'Cl. 15 #27a-176', city: 'BOGOTA – BOGOTA', points: 900000 },
+        { user: '1019056777', pass: '1234', name: 'Daniel Cuervo', cedula: '20004', email: 'daniel.cuervo@proimpo.com', phone: '3000000004', address: 'Cl. 15 #27a-176', city: 'BOGOTA – BOGOTA', points: 900000 },
         { user: 'vendedor2', pass: '1234', name: 'Carlos Perez', cedula: '20005', email: 'perez.c@proimpo.com', phone: '3000000005', address: 'Cra. 10 #45-12', city: 'MEDELLIN – ANTIOQUIA', points: 750000 }
     ]
 };
