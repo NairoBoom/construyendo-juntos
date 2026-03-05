@@ -120,116 +120,128 @@ const PRODUCTS = [
         name: 'MOLINO CORTADOR 3 EN 1',
         stock: 500,
         description: 'Ralla fácilmente tus frutas y verduras favoritas. Con este rallador podrás rallar en minutos una gran variedad de alimentos, además incluye tres cilindros de corte diferentes para que puedas lograr varios tipos de corte según lo necesites.\n\nCaracterísticas:\n• Sistema 3 En 1\n• Pieza de empuje\n• Tambores intercambiables en acero inoxidable\n• Desmontable para facilitar la limpieza\n• Base con ventosa ultra fuerte\n• Ideal para rayar, cortar, triturar verduras, frutas, queso y más',
-        points: 80,
+        points: 70,
         category: 'Cocina',
-        icon: 'fa-blender'
+        icon: 'fa-blender',
+        image: 'img/MOLINO CORTADOR 3 EN 1.jpg'
     },
     {
         id: '20105811016',
         name: 'EDREDÓN CAMA DOBLE',
         stock: 326,
         description: 'Transforma tu habitación en un espacio acogedor y elegante con nuestro edredón doble, diseñado para brindarte máxima suavidad y calidez durante toda la noche.\n\nFabricado con materiales de alta calidad, su textura es suave al tacto y ligera.\n\nCaracterísticas:\n• Tamaño: Doble (ideal para camas de 1.40 m aprox.)\n• Tela exterior suave y resistente\n• Relleno ligero y térmico\n• Fácil de lavar y de secado rápido\n• Colores duraderos',
-        points: 100,
+        points: 92,
         category: 'Hogar',
-        icon: 'fa-bed'
+        icon: 'fa-bed',
+        image: 'img/EDREDON CAMA DOBLE.jpg'
     },
     {
         id: '20105855807',
         name: 'JARRA + JUEGO DE 4 VASOS',
         stock: 310,
         description: 'Set que incluye una jarra con capacidad de 800 ml y cuatro vasos de 200 ml cada uno, elaborados en vidrio transparente con diseño acanalado.\n\nDimensiones:\n• Jarra: 19.5 cm de alto y 7.4 cm de diámetro\n• Vasos: 8.9 cm de alto y 7.7 cm de diámetro\n\nPresentación como set completo y listo para usar.',
-        points: 50,
+        points: 52,
         category: 'Cocina',
-        icon: 'fa-wine-glass-alt'
+        icon: 'fa-wine-glass-alt',
+        image: 'img/JARRA + JUEGO DE 4 VASOS.jpg'
     },
     {
         id: '20105811081',
         name: 'WAFLERA REDONDA',
         stock: 291,
         description: 'Dale un toque delicioso a tus desayunos o meriendas con nuestra práctica waflera redonda de un puesto. ¡Prepara waffles dulces o salados en minutos!\n\nCon su revestimiento antiadherente y su tamaño compacto, es perfecta para cualquier cocina. Su diseño sencillo y fácil de usar te permitirá disfrutar de waffles perfectos en cuestión de minutos.',
-        points: 110,
+        points: 92,
         category: 'Electrodomésticos',
-        icon: 'fa-circle'
+        icon: 'fa-circle',
+        image: 'img/WAFLERA REDONDA.jpg'
     },
     {
         id: '20105800116',
         name: 'JUEGO DE SARTENES',
         stock: 208,
         description: 'Juego de Sartén Imusa x3 (18-20-24 cm) totalmente original.\n\nCuentan con estructura resistente recubierta en antiadherente de alta calidad que evita que los alimentos se peguen a la superficie, además poseen un largo mango de agarre que facilita la manipulación.\n\nImusa lleva 80 años conociendo a las personas y diseñando productos que reúnen las más altas exigencias para quienes disfrutan de la cocina fácil y práctica.',
-        points: 60,
+        points: 65,
         category: 'Cocina',
-        icon: 'fa-utensils'
+        icon: 'fa-utensils',
+        image: 'img/JUEGO DE SARTENES X 3.jpg'
     },
     {
         id: '20105855792',
         name: 'FREIDORA DE AIRE',
         stock: 176,
         description: 'Disfruta de una alimentación más saludable con la Freidora de Aire Imusa de 3,2 litros. Cocina tus comidas favoritas con hasta un 80% menos de grasa.\n\nCaracterísticas:\n• Capacidad: 3,2 litros\n• Potencia: 1100W\n• Tecnología de circulación de aire caliente\n• Dimensiones: 30x30x32.8 cm\n• Fácil de usar y limpiar\n• Garantía de 1 año',
-        points: 45,
+        points: 120,
         category: 'Electrodomésticos',
-        icon: 'fa-fan'
+        icon: 'fa-fan',
+        image: 'img/FREIDORA DE AIRE.jpg'
     },
     {
         id: '20105855798',
         name: 'CARRO DE MERCADO',
         stock: 170,
         description: 'Carro Lona Para Mercar en poliéster, resistente al agua.\n\nCaracterísticas:\n• Cierre de cordón para mayor seguridad\n• Bolsillo con cierre en la parte trasera\n• Estructura de aluminio metálico de alta calidad\n• Parte frontal plegable\n• 2 ruedas de goma resistentes\n• Capacidad máx: 25 kg\n• Ideal para ir al supermercado o al mercado sin cargar peso.',
-        points: 55,
+        points: 82,
         category: 'General',
-        icon: 'fa-shopping-bag'
+        icon: 'fa-shopping-bag',
+        image: 'img/CARRO DE MERCADO.jpg'
     },
     {
         id: '20105800108',
         name: 'SÁBANAS CAMA DOBLE',
         stock: 168,
         description: 'Juego de Sábana Doble en polialgodón (50% algodón, 50% poliéster).\n\nIncluye:\n• Sábana ajustable: 140 x 190 cm\n• Sábana plana: 190 x 240 cm\n• 2 fundas para almohadas de 75 cm\n\nPerfecta para colchones de hasta 140 cm de ancho y 35 cm de altura. Fácil lavado a 30°C, apto para lavadora y secadora.',
-        points: 45,
+        points: 78,
         category: 'Hogar',
-        icon: 'fa-bed'
+        icon: 'fa-bed',
+        image: 'img/SABANAS CAMA DOBLE.jpg'
     },
     {
         id: '20105800117',
         name: 'ASADOR BBQ',
         stock: 150,
         description: '¡Cocina con gusto! Este asador será tu aliado para agasajar a tus comensales y recibir todos los aplausos.\n\nPodrás preparar los mejores cortes y las verduras más deliciosas de una manera práctica y cómoda.\n\nEnciende el fuego y comienza a disfrutar. ¡Lleva tu asador a donde quieras! Trasládalo fácilmente hacia el jardín y disfruta de un rico asado al aire libre.',
-        points: 240,
+        points: 350,
         category: 'General',
-        icon: 'fa-fire'
+        icon: 'fa-fire',
+        image: 'img/ASADOR BBQ.jpg'
     },
     {
         id: '20105811479',
         name: 'PIZZA MAKER',
         stock: 139,
         description: 'Pizza maker con sistema automático regulador de temperatura, carcasa termo-resistente y manija fría al tacto.\n\nCaracterísticas:\n• 2 parrillas en un solo producto (apertura 180°)\n• Calentamiento independiente\n• Plancha superior con acabado grill\n• Luces indicadoras de estado\n• Prepara pizzas, crepes, omelettes y mucho más',
-        points: 45,
+        points: 200,
         category: 'Electrodomésticos',
-        icon: 'fa-pizza-slice'
+        icon: 'fa-pizza-slice',
+        image: 'img/PIZZA MARKET.webp'
     },
     {
         id: '20105800107',
         name: 'VAJILLA 4 PUESTOS',
         stock: 104,
         description: 'Renueva tus comidas con nuestra vajilla de 4 puestos, perfecta para el día a día o para recibir invitados con estilo.\n\nSu diseño moderno y acabado elegante combinan fácilmente con cualquier decoración. Fabricada con materiales resistentes y duraderos, ideal para uso frecuente, manteniendo su brillo y calidad con el paso del tiempo.',
-        points: 590,
+        points: 210,
         category: 'Cocina',
-        icon: 'fa-utensil-spoon'
+        icon: 'fa-utensil-spoon',
+        image: 'img/VAJILLA 4 PUESTOS.jpg'
     },
     {
         id: '20105800106',
         name: 'JUEGO X 2 TOALLAS',
         stock: 85,
         description: 'El Juego De Toallas Belle Noite / 2 Toallas es ideal para tu hogar. Modelo de gran suavidad, hermoso diseño y tremenda calidad.',
-        points: 35,
+        points: 95,
         category: 'Hogar',
-        icon: 'fa-tshirt'
+        icon: 'fa-tshirt',
+        image: 'img/JUEGO X 2 TOALLAS.jpg'
     }
 ];
 
 // Usuarios de demo por perfil (usuario / contraseña)
 const USERS_DB = {
     'Vendedores Depósitos': [
-        { user: '1019056777', pass: '1234', name: 'Daniel Cuervo', cedula: '20004', email: 'daniel.cuervo@proimpo.com', phone: '3000000004', address: 'Cl. 15 #27a-176', city: 'BOGOTA – BOGOTA', points: 900000 },
-        { user: 'vendedor2', pass: '1234', name: 'Carlos Perez', cedula: '20005', email: 'perez.c@proimpo.com', phone: '3000000005', address: 'Cra. 10 #45-12', city: 'MEDELLIN – ANTIOQUIA', points: 750000 }
+        { user: '1019056777', pass: '1234', name: 'Daniel Cuervo', cedula: '20004', email: 'daniel.cuervo@gmail.com', phone: '3000000004', address: 'Cl. 15 #27a-176', city: 'BOGOTA – BOGOTA', points: 900000 },
+        { user: 'vendedor2', pass: '1234', name: 'Carlos Perez', cedula: '20005', email: 'perez.carlos@gmail.com', phone: '3000000005', address: 'Cra. 10 #45-12', city: 'MEDELLIN – ANTIOQUIA', points: 750000 }
     ]
 };
 
@@ -327,9 +339,19 @@ function setUserUI() {
 
 // ==================== NAVIGATION ====================
 
+function smoothNavigateTo(pageId, sectionId) {
+    navigateTo(pageId);
+    setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, 100);
+}
+
 function navigateTo(pageId) {
     // Block navigation to authenticated pages if not logged in
-    const authPages = ['page-home', 'page-catalog', 'page-cart'];
+    const authPages = ['page-home', 'page-catalog', 'page-cart', 'page-profile'];
     if (authPages.includes(pageId) && !currentUser) {
         navigateTo('page-welcome');
         return;
@@ -339,11 +361,17 @@ function navigateTo(pageId) {
     document.getElementById(pageId).classList.add('active');
     window.scrollTo(0, 0);
 
+    if (pageId === 'page-home') {
+        renderFeaturedProducts();
+    }
     if (pageId === 'page-catalog') {
         renderProducts();
     }
     if (pageId === 'page-cart') {
         renderCart();
+    }
+    if (pageId === 'page-profile') {
+        renderProfile();
     }
     updateNavCounts();
 }
@@ -498,7 +526,10 @@ function renderProducts(filter = 'all', search = '') {
              style="animation-delay: ${i * 0.05}s"
              onclick="openProductModal('${product.id}')">
             <div class="h-48 flex items-center justify-center overflow-hidden" style="background-color: ${PRODUCT_COLORS[originalIdx % PRODUCT_COLORS.length]}">
-                <i class="fas ${product.icon} product-image text-6xl" style="color: rgba(0,0,0,0.15)"></i>
+                ${product.image
+                    ? `<img src="${product.image}" alt="${product.name}" class="product-image w-full h-full object-contain p-2">`
+                    : `<i class="fas ${product.icon} product-image text-6xl" style="color: rgba(0,0,0,0.15)"></i>`
+                }
             </div>
             <div class="p-4">
                 <h4 class="font-bold text-brand-dark text-sm mb-1 line-clamp-2">${product.name}</h4>
@@ -512,6 +543,36 @@ function renderProducts(filter = 'all', search = '') {
             </div>
         </div>
         `;
+    }).join('');
+}
+
+function renderFeaturedProducts() {
+    const container = document.getElementById('featured-products');
+    if (!container) return;
+    const featured = PRODUCTS.slice(0, 3); // First 3 products
+    container.innerHTML = featured.map((product, i) => {
+        const idx = PRODUCTS.indexOf(product);
+        return `
+        <div class="product-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer border border-gray-100"
+             style="animation-delay: ${i * 0.1}s"
+             onclick="openProductModal('${product.id}')">
+            <div class="h-40 md:h-48 flex items-center justify-center overflow-hidden" style="background-color: ${PRODUCT_COLORS[idx % PRODUCT_COLORS.length]}">
+                ${product.image
+                    ? `<img src="${product.image}" alt="${product.name}" class="product-image w-full h-full object-contain p-2">`
+                    : `<i class="fas ${product.icon} product-image text-5xl" style="color: rgba(0,0,0,0.15)"></i>`
+                }
+            </div>
+            <div class="p-3 md:p-4">
+                <h4 class="font-bold text-brand-dark text-xs md:text-sm mb-1 line-clamp-2">${product.name}</h4>
+                <p class="text-xs text-brand-gray mb-2">Stock: ${product.stock} uds.</p>
+                <div class="flex items-center justify-between">
+                    <span class="bg-brand-red text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-bold">${product.points} pts</span>
+                    <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="bg-brand-green text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm hover:opacity-80 transition-all">
+                        <i class="fas fa-cart-plus mr-1"></i> Agregar
+                    </button>
+                </div>
+            </div>
+        </div>`;
     }).join('');
 }
 
@@ -541,11 +602,13 @@ function openProductModal(productId) {
     currentModalProductId = productId;
 
     const idx = PRODUCTS.indexOf(product);
-    document.getElementById('modal-product-image').innerHTML = `
-        <div class="w-full h-64 flex items-center justify-center" style="background-color: ${PRODUCT_COLORS[idx % PRODUCT_COLORS.length]}">
+    document.getElementById('modal-product-image').innerHTML = product.image
+        ? `<div class="w-full h-64 flex items-center justify-center" style="background-color: ${PRODUCT_COLORS[idx % PRODUCT_COLORS.length]}">
+            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain p-4">
+        </div>`
+        : `<div class="w-full h-64 flex items-center justify-center" style="background-color: ${PRODUCT_COLORS[idx % PRODUCT_COLORS.length]}">
             <i class="fas ${product.icon} text-9xl" style="color: rgba(0,0,0,0.1)"></i>
-        </div>
-    `;
+        </div>`;
     document.getElementById('modal-product-name').textContent = product.name;
     document.getElementById('modal-product-points').textContent = product.points + ' pts';
     document.getElementById('modal-product-desc').innerHTML = product.description.replace(/\n/g, '<br>');
@@ -661,8 +724,11 @@ function renderCart() {
             <tr class="border-b">
                 <td class="py-4 px-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-16 h-16 rounded-lg flex items-center justify-center" style="background-color: ${PRODUCT_COLORS[idx % PRODUCT_COLORS.length]}">
-                            <i class="fas ${product.icon} text-xl" style="color: rgba(0,0,0,0.2)"></i>
+                        <div class="w-16 h-16 rounded-lg flex items-center justify-center overflow-hidden" style="background-color: ${PRODUCT_COLORS[idx % PRODUCT_COLORS.length]}">
+                            ${product.image
+                                ? `<img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain p-1">`
+                                : `<i class="fas ${product.icon} text-xl" style="color: rgba(0,0,0,0.2)"></i>`
+                            }
                         </div>
                         <span class="font-semibold text-sm text-brand-dark">${product.name}</span>
                     </div>
@@ -903,15 +969,15 @@ function updateNavCounts() {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
     const pointsFormatted = formatNumber(userPoints);
 
-    document.querySelectorAll('[id^="cart-count-nav"]').forEach(el => {
+    document.querySelectorAll('[id^="cart-count-nav"], [id^="cart-count-mega"]').forEach(el => {
         el.textContent = count;
     });
 
-    document.querySelectorAll('[id^="points-nav"]').forEach(el => {
+    document.querySelectorAll('[id^="points-nav"], [id^="points-mega"]').forEach(el => {
         el.textContent = pointsFormatted;
     });
 
-    document.querySelectorAll('[id^="user-name-nav"]').forEach(el => {
+    document.querySelectorAll('[id^="user-name-nav"], [id^="user-name-mega"]').forEach(el => {
         el.textContent = currentUser ? currentUser.name : 'Usuario';
     });
 }
@@ -930,6 +996,64 @@ function showToast(message, isError = false) {
         toast.style.transition = 'opacity 0.3s';
         setTimeout(() => toast.remove(), 300);
     }, 2500);
+}
+
+// ==================== PROFILE ====================
+
+function renderProfile() {
+    if (!currentUser) return;
+
+    document.getElementById('profile-user-name').textContent = currentUser.name;
+    document.getElementById('profile-points').textContent = formatNumber(userPoints);
+
+    // Calculate monthly points (simulated: 10% of total)
+    const monthlyPoints = Math.round(userPoints * 0.1);
+    document.getElementById('profile-monthly-points').textContent = formatNumber(monthlyPoints);
+
+    // Get redemption history
+    const history = getRedemptionHistory();
+
+    // Count total redeemed products and collect names
+    let totalRedeemed = 0;
+    const productNames = [];
+    history.forEach(r => {
+        r.items.forEach(item => {
+            totalRedeemed += item.quantity;
+            if (!productNames.includes(item.name)) {
+                productNames.push(item.name);
+            }
+        });
+    });
+
+    document.getElementById('profile-redeemed-count').textContent = totalRedeemed;
+
+    // Show redeemed product names with bullet points
+    const listEl = document.getElementById('profile-redeemed-list');
+    if (productNames.length > 0) {
+        listEl.innerHTML = productNames.map(n => `<p class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-brand-red rounded-full inline-block"></span> ${n}</p>`).join('');
+    } else {
+        listEl.innerHTML = '';
+    }
+
+    // Render history
+    const historyEl = document.getElementById('profile-history');
+    if (history.length === 0) {
+        historyEl.innerHTML = '<p class="text-sm text-brand-gray">No tienes redenciones aún.</p>';
+    } else {
+        historyEl.innerHTML = history.map(r => {
+            const date = new Date(r.date);
+            const dateStr = date.toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' });
+            return `
+                <div class="border rounded-lg p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                        <p class="font-semibold text-sm text-brand-dark">${r.ref}</p>
+                        <p class="text-xs text-brand-gray">${dateStr} — ${r.items.map(i => i.name).join(', ')}</p>
+                    </div>
+                    <span class="bg-brand-red text-white px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">${formatNumber(r.totalPoints)} pts</span>
+                </div>
+            `;
+        }).join('');
+    }
 }
 
 // ==================== INIT ====================

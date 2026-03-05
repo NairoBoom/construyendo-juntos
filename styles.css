@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     overflow-x: hidden;
 }
@@ -208,16 +212,27 @@ body {
 .mobile-menu {
     background: white;
 }
-.mobile-menu a {
-    padding-left: 16px;
-}
-@media (min-width: 768px) {
-    .mobile-menu a {
-        padding-left: 0;
-    }
-}
 .hamburger-arrow {
     transition: transform 0.3s ease;
+}
+
+/* ========== MEGA MENU ========== */
+@media (min-width: 768px) {
+    .mega-menu-item .mega-dropdown {
+        display: none !important;
+    }
+    .mega-menu-item:hover .mega-dropdown {
+        display: block !important;
+    }
+}
+@media (max-width: 767px) {
+    .mega-menu-item .mega-dropdown {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: #f9f9f9;
+        padding-left: 1rem;
+    }
 }
 
 /* ========== SCROLLBAR HIDE (sub navbar) ========== */
